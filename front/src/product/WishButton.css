@@ -1,0 +1,9 @@
+.wish_button{
+    width: 100%;
+    min-width: 60px;
+    padding: 8px 9px 8px 6px;
+    white-space: nowrap;
+    font-size: clamp(12px, 1.4vw, 20px);
+    flex-shrink: 0;
+    border-radius: 5px;
+}

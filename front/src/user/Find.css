@@ -1,0 +1,35 @@
+.Pw_page,
+.Id_page{
+    position: absolute;
+    left: 35%;
+    width: 30%;
+    height: 50%;
+    bottom: 21%;
+     border-radius: 10px;
+}
+.title2{
+    font-weight: 900;
+  font-size: 30px;
+  margin-top: 20px;
+  text-align: center;
+}
+.lookup{
+    background-color: rgb(250, 235, 204);
+    margin-top: 50px;
+    width: 60%;
+    height: 45px;
+    margin-left: 10px;
+     border: none;
+  border-radius: 7px;
+  font-size: 17px;
+  cursor: pointer;  
+}
+.back_btn2{
+    margin-top: 25px;
+  width: 60%;
+  height: 40px;
+  margin-left: 10px;
+   border: none;
+  border-radius: 7px;
+  cursor: pointer;
+}

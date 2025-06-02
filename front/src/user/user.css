@@ -1,0 +1,185 @@
+.join_page{
+  position: absolute;
+  left: 35%;
+  width: 30%;
+  height: 75%;
+  border-radius: 10px;
+}
+.login_page{
+   position: absolute;
+  left: 35%;
+  top:25%;
+  width: 30%;
+  height: 60%;
+  border-radius: 10px;
+}
+.title{
+  font-weight: 900;
+  font-size: 30px;
+  margin-top: 60px;
+  text-align: center;
+}
+.name_title,
+.phone_title,
+.join_title,
+.login_title{
+  font-weight: 600;
+  margin-top: 30px;
+  font-size: 20px;
+  margin-left: 100px;
+  text-align: left;
+}
+.inp{
+  border-radius: 5px;
+  margin-top: 10px;
+  width: 70%;
+  height: 40px;
+  font-size: 17px;
+  border: 1px solid gray;
+}
+.find_id{
+  border: none;
+  background-color: white;
+  color: gray;
+  margin-top: 30px;
+  outline: none;
+  margin-left: 9px;
+  cursor: pointer;
+}
+.find_id:hover{
+  text-decoration: underline;
+}
+.find_id:focus,
+.find_id:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+.find_pw{
+   border: none;
+  background-color: white;
+  color: gray;
+  margin-left: 9px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+.find_pw:hover{
+  text-decoration: underline;
+}
+.find_pw:focus,
+.find_pw:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+.login_btn{
+  width: 71%;
+  height: 45px;
+  margin-left: 85px;
+  margin-top: 10px;
+  background-color: rgb(250, 235, 204);
+  font-size: 20px;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+}
+.line {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 20px 0 0 90px;
+  color: gray;
+  margin-top: 30px;
+}
+
+.line::before,
+.line::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background-color: #ccc;
+  flex: 0.4;
+}
+
+.line span {
+  padding: 0 10px;
+  white-space: nowrap;
+}
+
+.join_btn{
+  margin-top: 25px;
+  width: 70%;
+  height: 45%;
+  margin-left: 90px;
+  background-color: white;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+}
+.join_btn:hover{
+ color: rgb(116, 115, 115);
+}
+.join_btn:focus,
+.join_btn:focus-visible{
+  outline: none;
+  box-shadow: none;
+}
+.btn{
+  display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+.join_btn2{
+    width: 60%;
+  height: 45px;
+  margin-left: 115px;
+  margin-top: 20px;
+  background-color: rgb(250, 235, 204);
+  border: none;
+  border-radius: 7px;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.back_btn{
+   margin-top: 25px;
+  width: 60%;
+  height: 40px;
+  margin-left: 115px;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+}
+.Id_error{
+ margin-top: 5px;
+}
+.join_toggle{
+  width: 30px;
+  height: 30px;
+  border: none;
+  font-size: 20px;
+  background-color: white;
+ position: absolute;
+ right: 3%;
+ top: 41%;
+}
+.login_toggle{
+   width: 30px;
+  height: 30px;
+  border: none;
+  font-size: 20px;
+  background-color: white;
+  position: absolute;
+    right: 3%;
+    top: 48%;
+  
+}
+.pw_error,
+.phone_error,
+.id_error,
+.check_message{
+  color: red;
+}
+.pw_valid,
+.phone_valid,
+.id_valid{
+  color: rgb(34, 184, 41);
+}

@@ -1,0 +1,28 @@
+.f1 {
+  background-color: rgb(238, 237, 237);
+  text-align: left;
+  padding: 20px 10%;
+  font-size: 14px;
+
+  /* 아래 추가 항목 */
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: auto; /* flex 레이아웃일 때 밀어내기 */
+}
+
+
+.p1 {
+  margin-bottom: 10px;
+}
+
+.p1 button {
+  margin-right: 10px;
+  border: none;
+  background: none;
+  color: #555;
+  cursor: pointer;
+}
+
+.p1 button:hover {
+  text-decoration: underline;
+}

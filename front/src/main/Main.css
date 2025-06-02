@@ -1,0 +1,107 @@
+#root {
+  text-align: center;
+}
+
+
+/* 광고 슬라이더 */
+.main_div_ads {
+  width: 100%;
+  aspect-ratio: 3 / 1;
+  margin-top: 4%;
+}
+
+.main_img_ads {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 슬라이더 상품 (1~5번) */
+/*.main_product_slider_container {
+  margin: 30px auto;
+  width: 90%;
+  position: relative;
+  text-align: center;
+  margin-top: 10%;
+}*/
+.main_product_slider_container {
+  width: 90%;
+  margin: 60px auto;
+  position: relative;
+  overflow: hidden;
+}
+
+
+/*.main_img_div_slider {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}*/
+
+.main_img_div_slider {
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main_fraction-indicator {
+  margin-top: 1vw;
+  font-size: 1.1vw;
+  font-weight: bold;
+}
+.main_product_slider_text{
+  text-align: left;
+  font-size: 1.6vw;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* 정적 상품 (6~10번) */
+.main_div_static {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+
+.main_img_div_static {
+  width: 18%;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .main_img_div_static {
+    width: 45%;
+  }
+}
+
+/* 공통 상품 이미지 및 정보 */
+.main_div_1_img {
+  width: 100%;
+  height: auto; /* 고정 높이 */
+  object-fit: cover; /* 일정 크기로 자르되, 비율 유지 */
+  border-radius: 10px;
+  display: block;
+}
+.main_product_info {
+  text-align: center;
+  margin-top: 5px;
+}
+
+.main_product_name {
+  font-size: 1.2vw;
+  font-weight: bold;
+  margin: 0.5vw 0;
+}
+
+.main_product_price {
+  font-size: 1vw;
+  color: #888;
+}
+

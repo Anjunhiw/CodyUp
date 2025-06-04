@@ -33,7 +33,7 @@ router.post('/items/:item_origin_id', async(req,res) => {
 
         //1.기존 item_option JSON 조회
         const [rows] = await conn.query(
-           'SELECT item_origin_id, item_name, item_option FROM item',
+           'SELECT item_origin_id, item_name, item_option FROM item WHERE item_origin_id = ?',
 
             [item_origin_id]
         );

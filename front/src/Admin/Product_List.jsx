@@ -10,7 +10,7 @@ const Product_List = () => {
   const [selectProduct, setSelectProduct] = useState(null); //선택된 상품 전체
   const [selectColor, setSelectColor] = useState(null); // 선택된 색상
   const [selectSize, setSelectSize] = useState(null); //선택된 사이즈
-  const [amount, setAmount] = useState(0); //입고할 수량
+  const [amount, setAmount] = useState(1); //입고할 수량
 
    useEffect(()=>{
     fetch('http://192.168.0.25:8080/admin/items')
@@ -29,7 +29,7 @@ const Product_List = () => {
     const toggleSize = () => setShowSize(!showSize);
 
     //상품 선택시 실행되는 함수
-    const ClickProduct = (product) => {
+    const chooseProduct = (product) => {
       setSelectProduct(product); //해당 상품 저장
       setShowName(false); // 드롭다운 닫기
       setSelectColor(null); // 초기화
@@ -43,7 +43,7 @@ const Product_List = () => {
     const availableColor = [...new Set(variants.map((v) => v.color))];
     const availableSize = [...new Set(variants.map((v) => v.size))];
 
-    const pushbtn = async () =>{
+    const handleAdd = async () =>{
       if(!selectProduct || !selectColor || !selectSize || amount <= 0){
         alert('모든 항목을 선택하고, 0보다 큰 수량을 입력해주세요.');
         return;
@@ -81,7 +81,7 @@ const Product_List = () => {
             {products.map(item => (
               <li
               key={item.item_origin_id} 
-              onClick={()=> ClickProduct(item)}>
+              onClick={()=> chooseProduct(item)}>
                 {item.item_name}
               </li>
             ))}
@@ -136,7 +136,7 @@ const Product_List = () => {
           </th>
              <th>
            수량:{''} <input type='number' min={0} disabled={!selectSize} value={amount} onChange={(e)=>setAmount(e.target.value)}/>
-           <button disabled={!selectSize}onClick={pushbtn}>입고</button>
+           <button disabled={!selectSize}onClick={handleAdd}>입고</button>
           </th>
          </tr>
     </thead>

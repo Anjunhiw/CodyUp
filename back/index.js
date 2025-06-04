@@ -9,7 +9,8 @@ const findRouter = require('./user/find');
 const itemRouter = require('./item/show');
 const buyRouter = require('./item/buy');
 const reviewRouter = require('./item/review');
-const adminRouter = require('./admin/dashboard')
+const adminRouter = require('./admin/dashboard');
+const productlistRouter = require('./admin/Product_list');
 const path = require('path');
 
 app.use(cors());
@@ -35,7 +36,8 @@ app.use('/find', findRouter);
 app.use('/item', itemRouter);
 app.use('/item',buyRouter);
 app.use('/item/review', reviewRouter); 
-app.use('/admin',adminRouter)
+app.use('/admin',adminRouter);
+app.use('/admin', productlistRouter);
 app.use('/img', express.static(path.join(__dirname, '../img')));
 
 

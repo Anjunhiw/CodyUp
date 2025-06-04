@@ -18,7 +18,7 @@ import SubCategoryPage from './menu_category/SubCategoryPage';
 
 const App = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [setIsAdmin] = useState(false);
+    const [isAdmin, setIsAdmin] = useState(false);
     useEffect(() => {
     const userId = sessionStorage.getItem("user_id");
     const isAdmin = sessionStorage.getItem("is_admin") === "1";

@@ -10,7 +10,11 @@
 }
 .addbtn{
     font-size: 23px;
-}
+    position: absolute;
+    top: 200%;
+    left: 40%;
+    cursor: pointer;
+}  
 /* 입고할 상품 제목 (상품명, 색상, 사이즈) */
 .title{
     padding: 50px;

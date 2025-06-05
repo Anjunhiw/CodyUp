@@ -136,8 +136,10 @@ const Product_List = () => {
           </th>
              <th>
            수량:{''} <input className='product-list-inp' type='number' min={0} disabled={!selectSize} value={amount} onChange={(e)=>setAmount(e.target.value)}/>
-           <button className='addbtn' disabled={!selectSize}onClick={handleAdd}>입고</button>
           </th>
+         </tr>
+         <tr>
+          <button className='addbtn' disabled={!selectSize}onClick={handleAdd}>입고</button>
          </tr>
     </thead>
    </table>

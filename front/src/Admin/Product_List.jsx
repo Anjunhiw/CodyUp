@@ -52,11 +52,10 @@ const Product_List = () => {
         const res = await fetch(`http://192.168.0.25:8080/admin/items/${selectProduct.item_origin_id}`,{
           method: 'POST',
           headers: {'Content-Type': 'application/json',},
-          body: JSON.stringify({
-            color: selectColor,
-            size: selectSize,
-            amount: Number(amount),
-          }),
+          body: JSON.stringify({ color: selectColor,
+      size: selectSize,
+      amount: Number(amount) }),
+        
         });
 
         if(res.ok){
@@ -69,30 +68,31 @@ const Product_List = () => {
         console.error('입고 오류:', error);
       }
     };
+   
   return (
    <div>
-   <table>
+   <table className='mainlist'>
     <thead>
       <tr>
         <th>
-        <button onClick={toggleName}>상품명{showName ? '▲' : '▼'}</button>
+        <button className="title" onClick={toggleName}>상품명{showName ? '▲' : '▼'}</button>
         {showName && (
           <ul>
             {products.map(item => (
               <li
               key={item.item_origin_id} 
               onClick={()=> chooseProduct(item)}>
-                {item.item_name}
+                  <span className='title-product-list'>{item.item_name}</span>
               </li>
             ))}
           </ul>
         )}
-        <div>
-          {selectProduct ? `${selectProduct.item_name}` : '선택된 상품 없음'}
+        <div className='title-product'>
+          {selectProduct ? `${selectProduct.item_name}` : <span className='title-product-none'>선택된 상품 없음</span>}
         </div>
         </th>
         <th>
-         <button onClick={toggleColor} disabled={!selectProduct}>
+         <button className='title' onClick={toggleColor} disabled={!selectProduct}>
           색상 {showColor ? '▲' : '▼'}
           </button>
           {showColor &&(
@@ -103,17 +103,17 @@ const Product_List = () => {
                 onClick={()=> {
                   setSelectColor(color);
                   setShowColor(false);}}>
-                  {color}
+                    <span className='title-product-list'>{color}</span>
                 </li>
               ))}
             </ul>
           )}
-          <div>
-            {selectColor ? `${selectColor}` : '색상 선택 필요'}
+          <div className='title-product'>
+           {selectColor ? `${selectColor}` : <span className='title-product-none'>색상 선택 필요</span>}
           </div>
         </th>
           <th>
-            <button onClick={toggleSize} disabled={!selectColor}>
+            <button className='title' onClick={toggleSize} disabled={!selectColor}>
               사이즈 {showSize ? '▲' : '▼'}
             </button>
             {showSize && (
@@ -127,25 +127,20 @@ const Product_List = () => {
                   <li key={size} onClick={() => {setSelectSize(size);
                     setShowSize(false);
                   }}>
-                    {size}
+                      <span className='title-product-list'>{size}</span>
                 </li>
                 ))}
               </ul>
               )}
-                 <div>{selectSize ? selectSize : '사이즈 선택 필요'}</div>
+                 <div className='title-product'>{selectSize ? selectSize : <span className='title-product-none'>사이즈 선택 필요</span>}</div>
           </th>
              <th>
-           수량:{''} <input type='number' min={0} disabled={!selectSize} value={amount} onChange={(e)=>setAmount(e.target.value)}/>
-           <button disabled={!selectSize}onClick={handleAdd}>입고</button>
+           수량:{''} <input className='product-list-inp' type='number' min={0} disabled={!selectSize} value={amount} onChange={(e)=>setAmount(e.target.value)}/>
+           <button className='addbtn' disabled={!selectSize}onClick={handleAdd}>입고</button>
           </th>
          </tr>
     </thead>
    </table>
-     <div className='list'>
-        <p>✅ 선택된 상품명: {selectProduct?.item_name || '없음'}</p>
-        <p>✅ 선택된 색상: {selectColor || '없음'}</p>
-        <p>✅ 선택된 사이즈: {selectSize || '없음'}</p>
-      </div>
    </div>
   )
    }

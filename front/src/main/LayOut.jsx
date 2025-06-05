@@ -25,6 +25,11 @@ function Layout({isLoggedIn, setIsLoggedIn}) {
       navigate(`/item/search?keyword=${encodeURIComponent(keyword)}`);
   };
 
+  //마이페이지 
+  const goTomyPage = () =>{
+    navigate('/mypage/userInfo');
+  };
+
   //로그인, 로그아웃 
 
   const goToLogIn = () => {
@@ -49,7 +54,7 @@ function Layout({isLoggedIn, setIsLoggedIn}) {
      sessionStorage.removeItem('is_admin');
     navigate('/');
   }
-   const [userId, setUserId] = useState('');
+  const [userId, setUserId] = useState('');
   const [isAdmin, setIsAdmin] = useState(false);
   const isadmin = sessionStorage.getItem("is_admin") === "1";
 
@@ -69,6 +74,7 @@ function Layout({isLoggedIn, setIsLoggedIn}) {
           {isLoggedIn ? (
             <>
             <h6 className='main_title_welcome'>{userId}{isAdmin ? " 관리자님" : " 님"} 반갑습니다!</h6>
+            <button onClick={goTomyPage} className = 'main_title_mypage'>마이페이지</button>
             <button onClick={handleLogout} className='main_title_logout'>로그아웃</button>
             </>
           ) : (

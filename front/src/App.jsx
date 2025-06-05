@@ -19,6 +19,8 @@ import UserInfo from './mypage/userInfo';
 import UpdatePassword from './mypage/updatePassword';
 import CartPage from './mypage/CartPage';
 import WishlistPage from './mypage/WishlistPage';
+import MyOrders from "./mypage/MyOrders";
+
 const App = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [setIsAdmin] = useState(false);
@@ -57,6 +59,7 @@ const App = () => {
                     <Route path="/mypage/updatePassword" element={<UpdatePassword userId={sessionStorage.getItem("user_id")} />} />
                     <Route path="/mypage/cart" element={<CartPage userId={sessionStorage.getItem("user_id")} />} />
                     <Route path="/mypage/wishlist" element={<WishlistPage userId={sessionStorage.getItem("user_id")} />}/>
+                    <Route path="/mypage/myorder" element={<MyOrders userId={sessionStorage.getItem("user_id")} />}/>
                 </Route>
             </Routes>
         </Router>

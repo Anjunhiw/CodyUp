@@ -15,10 +15,15 @@ import Orders_List from "./Admin/Orders_List";
 import Sales_Overview from "./Admin/Sales_Overview";
 import {useEffect, useState} from 'react';
 import SubCategoryPage from './menu_category/SubCategoryPage';
-
+import UserInfo from './mypage/userInfo';
+import UpdatePassword from './mypage/updatePassword';
+import CartPage from './mypage/CartPage';
+import WishlistPage from './mypage/WishlistPage';
 const App = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [isAdmin, setIsAdmin] = useState(false);
+    const [setIsAdmin] = useState(false);
+    const myuserId = localStorage.getItem('user_id');
+
     useEffect(() => {
     const userId = sessionStorage.getItem("user_id");
     const isAdmin = sessionStorage.getItem("is_admin") === "1";
@@ -48,6 +53,10 @@ const App = () => {
                     <Route path='/Product_List' element={<Product_List/>}/>
                     <Route path='/Orders_List' element={<Orders_List/>}/>
                     <Route path='Sales_Overview' element={<Sales_Overview/>}/>
+                    <Route path="/mypage/userInfo" element={<UserInfo myuserId={sessionStorage.getItem("user_id")} />} />
+                    <Route path="/mypage/updatePassword" element={<UpdatePassword userId={sessionStorage.getItem("user_id")} />} />
+                    <Route path="/mypage/cart" element={<CartPage userId={sessionStorage.getItem("user_id")} />} />
+                    <Route path="/mypage/wishlist" element={<WishlistPage userId={sessionStorage.getItem("user_id")} />}/>
                 </Route>
             </Routes>
         </Router>

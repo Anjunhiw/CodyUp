@@ -49,9 +49,21 @@ body, html, #root {
   font-size: 1.1vw;
   cursor: pointer;
 }
+.main_title_mypage{
+  position: absolute;
+  right: 140px; /* 로그아웃 버튼 왼쪽으로 약간 여백 주기 */
+  top: 65%;
+  transform: translateY(-50%);
+  padding: 0.5vw 1vw;
+  font-size: 1.1vw;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  
+}
 .main_title_logout{
   border: none;
-   background-color: transparent;
+  background-color: transparent;
   position: absolute;
   right: 0px;
   top: 65%;

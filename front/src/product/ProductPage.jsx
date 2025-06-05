@@ -20,7 +20,7 @@ function ProductPage() {
   const currentUserId = sessionStorage.getItem('user_id');
   const [editingReviewId, setEditingReviewId] = useState(null);
   const [editedReviewText, setEditedReviewText] = useState('');
-
+  const [selectedItems, setSelectedItems] = useState([]);
   const variants = product?.item_option ? JSON.parse(product.item_option).variants : [];
 
   const availableColors = [...new Set(variants.map(v => v.color))];
@@ -69,31 +69,45 @@ function ProductPage() {
   }, [productId]);
 
   const handleOrder = () => {
-    if (!selectedSize || !selectedColor || selectedAmount <= 0) {
-      alert("옵션과 수량을 정확히 선택해주세요.");
-      return;
-    }
+  if (!selectedSize || !selectedColor || selectedAmount <= 0) {
+    alert("옵션과 수량을 정확히 선택해주세요.");
+    return;
+  }
 
-    axios.post('http://192.168.0.20:8080/item/buy', {
-      item_origin_id: product?.item_origin_id,
-      item_size: selectedSize,
-      item_color: selectedColor,
-      item_amount: selectedAmount
-    })
-      .then(res => {
-        if (res.data.success) {
-          alert(res.data.message);
-          setOrderMessage('');
-        } else {
-          alert(res.data.message);
-          setOrderMessage(res.data.message);
-        }
-      })
-      .catch(err => {
-        const msg = err.response?.data?.message || '주문 실패';
-        setOrderMessage(msg);
-      });
+  const user_id = sessionStorage.getItem("user_id"); // 또는 props, context 등에서 가져오기
+  if (!user_id) {
+    alert("로그인이 필요합니다.");
+    return;
+  }
+
+  const orderData = {
+    user_id,
+    order_items: [
+      {
+        cart_id: null, // 장바구니 아닌 직접 구매
+        item_origin_id: product?.item_origin_id,
+        quantity: selectedAmount,
+        color: selectedColor,
+        size: selectedSize
+      }
+    ]
   };
+
+  axios.post("http://192.168.0.20:8080/mypage/cart/order", orderData)
+    .then(res => {
+      if (res.data.success) {
+        alert("주문이 완료되었습니다.");
+        setOrderMessage('');
+      } else {
+        alert(res.data.message);
+        setOrderMessage(res.data.message);
+      }
+    })
+    .catch(err => {
+      const msg = err.response?.data?.message || '주문 실패';
+      setOrderMessage(msg);
+    });
+};
 
   const handleSubmitReview = () => {
   if (!reviewText.trim()) return;
@@ -200,6 +214,7 @@ function ProductPage() {
 
   if (!product) return <div>상품 정보를 불러오는 중...</div>;
 
+
   return (
     <div className="product_page_container">
       <div className="product_page_card">
@@ -257,7 +272,12 @@ function ProductPage() {
             >
               {maxAmount === 0 ? '품절' : '주문하기'}
             </button>
-            <CartButton item={product} />
+            <CartButton 
+            item={product}
+            selectedColor={selectedColor}
+            selectedSize={selectedSize}
+            selectedAmount={selectedAmount} 
+            />
           </div>
           
           <div className="product_page_dd">{getKoreanDateWithDayNDaysLater(2)} 도착 예정</div>

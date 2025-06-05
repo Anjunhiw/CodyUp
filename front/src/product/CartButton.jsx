@@ -1,51 +1,50 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import './CartButton.css'
+import './CartButton.css';
 
-function CartButton({ item }) {
+function CartButton({ item, selectedColor, selectedSize, selectedAmount }) {
   const [inCart, setInCart] = useState(false);
   const userId = sessionStorage.getItem('user_id');
 
-  // 테스트용 localStorage
   useEffect(() => {
-    const cart = JSON.parse(localStorage.getItem('cart') || '[]');
-    setInCart(cart.some(i => i.item_id === item.item_id));
+    if (!userId || !item?.item_origin_id) return;
+    setInCart(false);
   }, [item]);
 
-  const toggleCart = () => {
-    const cart = JSON.parse(localStorage.getItem('cart') || '[]');
-    if (cart.some(i => i.item_id === item.item_id)) {
-      const updated = cart.filter(i => i.item_id !== item.item_id);
-      localStorage.setItem('cart', JSON.stringify(updated));
-      setInCart(false);
-    } else {
-      cart.push(item);
-      localStorage.setItem('cart', JSON.stringify(cart));
-      setInCart(true);
+  const handleAddToCart = () => {
+    if (!userId || !selectedColor || !selectedSize || selectedAmount <= 0) {
+      alert('옵션을 모두 선택하세요.');
+      return;
     }
-  };
 
-  /*
-  // 연동용
-  useEffect(() => {
-    axios.get(`/cart/${userId}`).then(res => {
-      setInCart(res.data.some(i => i.item_id === item.item_id));
+    const cartOption = JSON.stringify({
+      color: selectedColor,
+      size: selectedSize,
+      quantity: selectedAmount
     });
-  }, [item]);
 
-  const toggleCart = () => {
-    const url = `/cart`;
-    const data = { user_id: userId, item_id: item.item_id };
-    if (inCart) {
-      axios.delete(url, { data }).then(() => setInCart(false));
-    } else {
-      axios.post(url, data).then(() => setInCart(true));
-    }
+    axios.post('http://192.168.0.20:8080/mypage/cart/add', {
+      user_id: userId,
+      item_origin_id: item.item_origin_id,
+      cart_option: cartOption,
+      price: item.item_price  // ✅ 개당 가격
+    })
+    .then(res => {
+      if (res.data.success) {
+        alert(res.data.message);
+        setInCart(true);
+      } else {
+        alert(`❌ ${res.data.message}`);
+      }
+    })
+    .catch(err => {
+      console.error('장바구니 추가 실패:', err);
+      alert('서버 오류로 장바구니 추가에 실패했습니다.');
+    });
   };
-  */
 
   return (
-    <button onClick={toggleCart} className='cart-button'>
+    <button onClick={handleAddToCart} className='cart-button'>
       {inCart ? '🛒 담김' : '➕ 장바구니'}
     </button>
   );

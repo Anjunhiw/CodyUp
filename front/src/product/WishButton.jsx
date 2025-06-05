@@ -6,46 +6,64 @@ function WishButton({ itemId }) {
   const [isWished, setIsWished] = useState(false);
   const userId = sessionStorage.getItem('user_id');
 
-  // 테스트용 localStorage
-  useEffect(() => {
-    const wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
-    setIsWished(wishlist.includes(itemId));
-  }, [itemId]);
+   useEffect(() => {
+    if (!userId) return;
 
-  const toggleWish = () => {
-    const wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
-    if (wishlist.includes(itemId)) {
-      const updated = wishlist.filter(id => id !== itemId);
-      localStorage.setItem('wishlist', JSON.stringify(updated));
-      setIsWished(false);
+    axios.get(`http://192.168.0.20:8080/mypage/wishlist/${userId}`)
+      .then(res => {
+        if (res.data.success) {
+          const found = res.data.wishlist.find(item => item.item_origin_id === parseInt(itemId));
+          setIsWished(!!found);
+        }
+      });
+  }, [itemId, userId]);
+
+  const handleWishToggle = () => {
+    if (!userId) {
+      alert("로그인이 필요합니다.");
+      return;
+    }
+
+    if (!isWished) {
+      // 찜 등록
+      axios.post('http://192.168.0.20:8080/mypage/wishlist', {
+        user_id: userId,
+        item_origin_id: itemId
+      })
+      .then(res => {
+        if (res.data.success) {
+          setIsWished(true);
+          alert("찜 등록 완료!");
+        } else {
+          alert(res.data.message);
+        }
+      })
+      .catch(err => {
+        console.error("찜 등록 실패:", err);
+        alert("찜 등록 중 오류 발생");
+      });
     } else {
-      wishlist.push(itemId);
-      localStorage.setItem('wishlist', JSON.stringify(wishlist));
-      setIsWished(true);
+      // 찜 해제
+      axios.delete('http://192.168.0.20:8080/mypage/wishlist', {
+        data: { user_id: userId, item_origin_id: itemId }
+      })
+      .then(res => {
+        if (res.data.success) {
+          setIsWished(false);
+          alert("찜 해제 완료");
+        } else {
+          alert(res.data.message);
+        }
+      })
+      .catch(err => {
+        console.error("찜 해제 실패:", err);
+        alert("찜 해제 중 오류 발생");
+      });
     }
   };
-
-  /*
-  // 연동용
-  useEffect(() => {
-    axios.get(`/wishlist/${userId}`).then(res => {
-      setIsWished(res.data.includes(itemId));
-    });
-  }, [itemId]);
-
-  const toggleWish = () => {
-    const url = `/wishlist`;
-    const data = { user_id: userId, item_id: itemId };
-    if (isWished) {
-      axios.delete(url, { data }).then(() => setIsWished(false));
-    } else {
-      axios.post(url, data).then(() => setIsWished(true));
-    }
-  };
-  */
-
+  
   return (
-    <button onClick={toggleWish} className='wish_button'>
+    <button onClick={handleWishToggle} className='wish_button'>
       {isWished ? '❤️ 찜함' : '🤍 찜하기'}
     </button>
   );

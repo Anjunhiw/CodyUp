@@ -1,0 +1,9 @@
+.mypage_btn{
+  width: 8%;
+  height: 45px;
+  background-color: rgb(250, 235, 204);
+  font-size: 20px;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+}

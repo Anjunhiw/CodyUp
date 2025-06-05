@@ -1,0 +1,31 @@
+.cart-page {
+  padding: 20px;
+}
+
+.cart-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.cart-table th, .cart-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+.cart-table input[type="number"] {
+  width: 60px;
+}
+
+.order-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #502314;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+.order-button:hover {
+  background-color: #703c27;
+}

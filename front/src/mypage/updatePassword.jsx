@@ -57,7 +57,7 @@ function UpdatePassword({ userId }) {
         </div>
         <div>
             <input
-            className='inp'
+            className='.update_inp'
             type={showCurrent ? "text" : "password"}
             placeholder="기존 비밀번호"
             value={currentPw}
@@ -70,7 +70,7 @@ function UpdatePassword({ userId }) {
         </div>
         <div>
             <input
-            className='inp'
+            className='.update_inp'
             type={showNew ? "text" : "password"}
             placeholder="새 비밀번호"
             value={newPw}

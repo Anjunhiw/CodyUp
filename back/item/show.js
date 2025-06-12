@@ -4,6 +4,7 @@ const pool = require('../db');
 const multer = require('multer');
 const path = require('path');
 
+
 // 전체 상품 목록 조회
 router.get('/', async (req, res) => {
   let conn;
@@ -56,9 +57,6 @@ router.get('/search', async (req, res) => {
     res.status(500).json({ message: '검색 실패' });
   }
 });
-
-
-
 
 // ✅ 상품 1개 조회 (프론트의 /item/1 요청 처리)
 router.get('/:id', async (req, res) => {

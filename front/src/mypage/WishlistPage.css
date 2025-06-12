@@ -1,0 +1,78 @@
+.wishlist-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.wishlist-controls {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+  gap: 10px;
+}
+
+.wishlist-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.wishlist-card {
+  width: calc((100% - 40px) / 3); /* 3열 구조 (gap 20px * 2) 반영 */
+  min-width: 280px; /* 너무 작아지지 않게 */
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 1px 1px 6px rgba(0,0,0,0.05);
+  background-color: #fff;
+  text-align: left;
+  padding: 12px;
+}
+
+@media (max-width: 960px) {
+  .wishlist-card {
+    width: calc((100% - 20px) / 2); /* 태블릿: 2열 */
+  }
+}
+
+@media (max-width: 640px) {
+  .wishlist-card {
+    width: 100%; /* 모바일: 1열 */
+  }
+}
+
+
+.wishlist-img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.wishlist-info h4 {
+  margin: 10px 0 6px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.wishlist-info p {
+  margin: 4px 0;
+  font-size: 14px;
+}
+
+.sold-out-label {
+  color: red;
+  font-weight: bold;
+}
+
+.wishist_button {
+  margin-top: 8px;
+  background-color: #ff5a5a;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}

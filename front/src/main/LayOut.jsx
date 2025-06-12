@@ -2,7 +2,7 @@
 import { Outlet, useNavigate } from 'react-router-dom';
 import { useState , useEffect} from 'react';
 import './LayOut.css'; // 스타일 유지
-import Information from './Information'; 
+import Information from './Information';
 
 function Layout({isLoggedIn, setIsLoggedIn}) {
   const navigate = useNavigate();
@@ -25,6 +25,11 @@ function Layout({isLoggedIn, setIsLoggedIn}) {
       navigate(`/item/search?keyword=${encodeURIComponent(keyword)}`);
   };
 
+  //마이페이지 
+  const goTomyPage = () =>{
+    navigate('/mypage/userInfo');
+  };
+
   //로그인, 로그아웃 
 
   const goToLogIn = () => {
@@ -40,7 +45,10 @@ function Layout({isLoggedIn, setIsLoggedIn}) {
     navigate('./Orders_List');
   }
   const goToSales = () => {
-    navigate('./Sales_Overview')
+    navigate('./Sales_Overview');
+  }
+  const goToDiscount = () => {
+    navigate('./Discount_List');
   }
 
   const handleLogout = () =>{
@@ -49,7 +57,7 @@ function Layout({isLoggedIn, setIsLoggedIn}) {
      sessionStorage.removeItem('is_admin');
     navigate('/');
   }
-   const [userId, setUserId] = useState('');
+  const [userId, setUserId] = useState('');
   const [isAdmin, setIsAdmin] = useState(false);
   const isadmin = sessionStorage.getItem("is_admin") === "1";
 
@@ -61,31 +69,38 @@ function Layout({isLoggedIn, setIsLoggedIn}) {
     setIsAdmin(storedIsAdmin === '1'); // '1'이면 true, 아니면 false
   }, [isLoggedIn]); // 로그인 상태가 바뀔 때마다 불러오기
   return (
-    <>
+    <div className="layout-wrapper">
       <div className='main_div_title'>
         <div className='main_title_row'>
-          <h2 onClick={goToMain} className='main_title'>Cody Up</h2>
-          {/* { () ? (true) : (flase) } */}
-          {isLoggedIn ? (
-            <>
+          <h2 onClick={goToMain} className='main_title'>CodyUp</h2>
+        
+        {isLoggedIn ? (
+          <div className="main_title_right_group">
             <h6 className='main_title_welcome'>{userId}{isAdmin ? " 관리자님" : " 님"} 반갑습니다!</h6>
+            {!isAdmin && <button onClick={goTomyPage} className='main_title_mypage'>마이페이지</button>}
             <button onClick={handleLogout} className='main_title_logout'>로그아웃</button>
-            </>
-          ) : (
-             <button onClick={goToLogIn} className='main_title_right'>로그인</button>
-          )}
+          </div>
+        ) : (
+          <button onClick={goToLogIn} className='main_title_right'>로그인</button>
+        )}
+
         </div>
 
         <div className='main_top_menu'>
-          {/* (관리자) ? (관리자페이지상단바) : (사용자페이지상단바) */}
-           {isadmin ? (
-                <>
-                <div className='category' onClick={goToUser}>
-                  회원관리
-                  </div>
-                  </>
-              ) : (
-                <>
+          
+          {isAdmin ? (
+            <>
+            
+              <div className='category' onClick={goToUser}>회원관리</div>
+              <div className='category' onClick={goToProduct}>상품입고</div>
+              <div className='category' onClick={goToOrders}>주문관리</div>
+              <div className='category' onClick={goToSales}>매출현황</div>
+              <div className='category' onClick={goToDiscount}>할인관리</div>
+            
+            </>
+          ) : (
+            <>
+            <div className='categories'>
               <div className='category'>
                 상의
                 <div className='dropdown'>
@@ -94,69 +109,42 @@ function Layout({isLoggedIn, setIsLoggedIn}) {
                   <div onClick={() => goToSub(2)}>후드</div>
                   <div onClick={() => goToSub(3)}>니트</div>
                   <div onClick={() => goToSub(4)}>반팔</div>
-                  </div>
+                </div>
               </div>
               <div className='category'>
-              하의
-              <div className='dropdown'>
-                <div onClick={() => goToSub(98)}>하의 전체</div>
-                <div onClick={() => goToSub(5)}>긴 바지</div>
-                <div onClick={() => goToSub(6)}>반 바지</div>
+                하의
+                <div className='dropdown'>
+                  <div onClick={() => goToSub(98)}>하의 전체</div>
+                  <div onClick={() => goToSub(5)}>긴 바지</div>
+                  <div onClick={() => goToSub(6)}>반 바지</div>
+                </div>
               </div>
-            </div>
-          </> )}
-          {isadmin ? (
-            <>
-            <div className='category' onClick={goToProduct}>
-              상품입고
-            </div>
+              </div>
+
+              <div className='search-box'>
+                <input
+                  className='search-input'
+                  type='text'
+                  placeholder='검색어 입력'
+                  value={keyword}
+                  onChange={(e) => setKeyword(e.target.value)}
+                  onKeyDown={(e) => { if (e.key === 'Enter') handleSearch(); }}
+                />
+                <button className='search-button' onClick={handleSearch}>검색</button>
+              </div>
             </>
-          ) : (
-            <>
-          
-          </>)}
-          {isadmin ? (
-            <>
-            <div className='category' onClick={goToOrders}>
-              주문관리
-            </div>
-            </>
-          ) : (
-            <>
-          
-          </>)}
-          {isadmin ? (
-            <>
-            <div className='category' onClick={goToSales}>
-              매출현황
-            </div>
-            </>
-          ) : (
-            <>
-          
-          <div className='search-box'>
-        <input
-          className='search-input'
-          type='text'
-          placeholder='검색어 입력'
-          value={keyword}
-          onChange={(e) => setKeyword(e.target.value)}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter') handleSearch();
-          }}
-          />
-        <button className='search-button' onClick={handleSearch}>
-        검색
-        </button>
-      </div>    
-          </>)}
+          )}
         </div>
       </div>
 
+      <div className='main-content'>
+        <Outlet />
+      </div>
+      <div className='layout_footer'>
+        <Information />
+      </div>
       
-      {/* 여기에 각 페이지 콘텐츠가 렌더링됨 */}
-      <Outlet />
-    </>
+    </div>
   );
 }
 

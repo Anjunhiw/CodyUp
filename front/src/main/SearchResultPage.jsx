@@ -10,7 +10,6 @@ function SearchResultPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
-
   useEffect(() => {
     if (!keyword) {
       setError('검색어가 없습니다.');

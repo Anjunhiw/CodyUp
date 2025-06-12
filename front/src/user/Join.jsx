@@ -132,48 +132,49 @@ const Join = () => {
       <div className={idValid ? "id_valid" : "id_error"}>{idMessage}</div> {/* ✅ 메시지 출력 */}
 
       <div className="join_title">비밀번호</div>
-      <input
-        className="inp"
-        type={showPassword ? "text" : "password"}
-        placeholder="영문자, 숫자, 특수문자 포함 8자 이상"
-        value={password}
-        onChange={(e) => {
-          const inputPw = e.target.value;
-          setPassword(inputPw);
+        <input
+          className="inp"
+          type={showPassword ? "text" : "password"}
+          placeholder="영문자, 숫자, 특수문자 포함 8자 이상"
+          value={password}
+          onChange={(e) => {
+            const inputPw = e.target.value;
+            setPassword(inputPw);
 
-          if (!passwordRegex.test(inputPw)) {
-      setPwMessage("영문자, 숫자, 특수문자 포함 8자 이상이어야 합니다");
-      setPwValid(false);
-      return;
-    }else{
-      setPwMessage("");//조건 만족하면 메시지 제거
-      setPwValid(true);
-    }   // 비밀번호 변경 시 확인도 자동 비교
-    if (confirmPassword) {
-      if (inputPw === confirmPassword) {
-        setPwConfirmMessage("비밀번호가 일치합니다");
-        setPwConfirmValid(true);
-      } else {
-        setPwConfirmMessage("비밀번호가 일치하지 않습니다");
-        setPwConfirmValid(false);
-      }
-        
-        }}}
-      />
-      <input className="inp" 
-      type={showPassword ? "text" : "password"} 
-      placeholder="비밀번호 확인" value={confirmPassword}
-      onChange={(e)=>{
-        setConfirmPassword(e.target.value);
-        if(e.target.value === password){
-          setPwConfirmMessage("비밀번호가 일치합니다");
-          setPwConfirmValid(true);
-        } else{
-          setPwConfirmMessage("비밀번호가 일치하지 않습니다");
-          setPwConfirmValid(false);
-        }
-      }}
-      />
+            if (!passwordRegex.test(inputPw)) {
+              setPwMessage("영문자, 숫자, 특수문자 포함 8자 이상이어야 합니다");
+              setPwValid(false);
+              return;
+            } else{
+              setPwMessage("");//조건 만족하면 메시지 제거
+              setPwValid(true);
+            }   // 비밀번호 변경 시 확인도 자동 비교
+            if (confirmPassword) {
+              if (inputPw === confirmPassword) {
+                setPwConfirmMessage("비밀번호가 일치합니다");
+                setPwConfirmValid(true);
+              } else {
+                setPwConfirmMessage("비밀번호가 일치하지 않습니다");
+                setPwConfirmValid(false);
+              }
+            }
+          }}
+        />
+          <input 
+            className="inp" 
+            type={showPassword ? "text" : "password"} 
+            placeholder="비밀번호 확인" value={confirmPassword}
+            onChange={(e)=>{
+              setConfirmPassword(e.target.value);
+              if(e.target.value === password){
+                setPwConfirmMessage("비밀번호가 일치합니다");
+              setPwConfirmValid(true);
+            } else{
+              setPwConfirmMessage("비밀번호가 일치하지 않습니다");
+              setPwConfirmValid(false);
+            }
+          }}
+        />
         <div className={pwConfirmValid ? "pw_valid" : "pw_error"}>{pwConfirmMessage}</div>
         <button type="button" onClick={()=>setShowPassword(!showPassword)} className="join_toggle" tabIndex={-1}>
           <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye}></FontAwesomeIcon>

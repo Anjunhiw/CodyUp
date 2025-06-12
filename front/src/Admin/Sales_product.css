@@ -1,0 +1,36 @@
+.sales-product-select{
+   height: 40px;
+    font-size: 18px;
+    border-radius: 8px;
+    position: absolute;
+    left: 20%;
+}
+.sales-product-inp{
+    width: 15%;
+    border-radius: 8px;
+    height: 35px;
+    font-size: 17px;
+    margin-top: 30px;
+}
+.sales-product-btn{
+    width: 5%;
+    height: 38px;
+    border: 2px solid;
+    border-radius: 6px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+.sales-product-table{
+    margin-left: 4%;
+    margin-top: 9%;
+    width: 60%;
+}
+.sales-product-table th{
+    background-color: #ececec;
+    width: 34%;
+    padding: 2%;
+}
+.sales-product-table td{
+    font-size: 18px;
+    padding: 10px;
+}

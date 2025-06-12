@@ -24,8 +24,16 @@ function Login({setIsLoggedIn}) {
 async function handleLogin(event) {
   event.preventDefault();
 
-  if (!id || !password) return alert("아이디와 비밀번호를 입력하세요.");
-  if (password.length < 8) return alert("비밀번호는 8자 이상이어야 합니다");
+  if (!id.trim() || !password.trim()) {
+      alert("아이디와 비밀번호를 모두 입력해주세요.");
+      return;
+    }
+
+  const pwRule = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
+    if (!pwRule.test(password)) {
+      alert("비밀번호는 영문자, 숫자, 특수문자를 포함한 8자 이상이어야 합니다.");
+      return;
+    } 
 
   try {
     const response = await fetch("http://192.168.0.20:8080/login", {
@@ -48,6 +56,7 @@ async function handleLogin(event) {
     setIsLoggedIn(true);
     sessionStorage.setItem("user_id", id);
     sessionStorage.setItem("is_admin", data.user.is_admin);
+    console.log(data.user.is_admin);
     navigate(data.user.is_admin === 1 ? "/Admin" : "/");
   } catch (err) {
     console.error("에러 발생:", err.message);
@@ -79,7 +88,7 @@ async function handleLogin(event) {
                     onChange={(e) => setPassword(e.target.value)}
                 ></input>
                 <button type="button" onClick={()=>setShowPassword(!showPassword)}className="login_toggle" tabIndex={-1}>
-               <FontAwesomeIcon icon= {showPassword ? faEyeSlash : faEye}></FontAwesomeIcon>
+               <FontAwesomeIcon  icon= {showPassword ? faEyeSlash : faEye}></FontAwesomeIcon>
                 </button>
             </div>
 

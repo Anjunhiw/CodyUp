@@ -16,14 +16,7 @@
   object-fit: cover;
 }
 
-/* 슬라이더 상품 (1~5번) */
-/*.main_product_slider_container {
-  margin: 30px auto;
-  width: 90%;
-  position: relative;
-  text-align: center;
-  margin-top: 10%;
-}*/
+
 .main_product_slider_container {
   width: 90%;
   margin: 60px auto;
@@ -47,16 +40,23 @@
   align-items: center;
 }
 
+.main_img_div_slider img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
 .main_fraction-indicator {
   margin-top: 1vw;
   font-size: 1.1vw;
   font-weight: bold;
 }
 .main_product_slider_text{
-  text-align: left;
-  font-size: 1.6vw;
+  text-align: center;
+  font-size: 20px;
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 /* 정적 상품 (6~10번) */
@@ -104,4 +104,171 @@
   font-size: 1vw;
   color: #888;
 }
+/* 날씨 관련 섹션 */
+.weather_section {
+  margin: 40px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+.today_weather_card {
+  background-color: #fff6d1;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+  width: 260px;
+  position: relative;
+}
+
+.today_weather_card::before {
+  content: "☀️";
+  font-size: 2rem;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.weekly_weather_banner {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.weather_day_card {
+  flex: 0 0 80px;
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  text-align: center;
+  font-size: 0.9rem;
+  user-select: none;
+  cursor: default;
+  transition: background-color 0.3s;
+  min-width: 100px;
+}
+
+.weather_day_card::before {
+  display: block;
+  font-size: 1.2rem;
+  margin-bottom: 4px;
+}
+
+.weather_day_card.today {
+  border: 2px solid #3399ff;
+  font-weight: 600;
+  background-color: #e6f0ff;
+}
+
+.weather_banner_full {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 30px;
+  background-color: transparent;
+  margin: 40px auto 0 auto;
+  width: 87.5%;
+  gap: 30px;
+}
+
+.today_weather_box {
+  flex: 0 0 220px;
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.weather_week_preview {
+  flex: 1;
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  scrollbar-width: thin;
+  scrollbar-color: #aaa #eee;
+  justify-content: space-around;
+}
+
+.weather_week_preview::-webkit-scrollbar {
+  height: 6px;
+}
+
+.weather_week_preview::-webkit-scrollbar-thumb {
+  background-color: #aaa;
+  border-radius: 3px;
+}
+
+/* 날씨 추천 섹션 */
+.weather_recommend_section {
+  width: 91%;
+  margin: 0px auto;
+  padding: 16px;
+  background-color: transparent;
+  text-align: center;
+}
+
+.weather_recommend_section h3::before {
+  font-size: 1.3rem;
+}
+
+.recommend_grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 16px;
+}
+
+.recommend_card {
+  width: 150px;
+  background: white;
+  padding: 10px;
+  border-radius: 10px;
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+
+.recommend_card:hover {
+  transform: scale(1.05);
+}
+
+.recommend_card img {
+  width: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+/* 커스텀 슬라이더 화살표 */
+.custom-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  cursor: pointer;
+  color: #333;
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 6px;
+  border-radius: 50%;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  transition: background 0.2s;
+}
+
+.custom-arrow:hover {
+  background: #f0f0f0;
+}
+
+.custom-prev {
+  left: 20px !important;
+}
+
+.custom-next {
+  right: 20px !important;
+}

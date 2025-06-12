@@ -2,22 +2,6 @@
   text-align: center;
 }
 
-body, html, #root {
-  height: 100%;
-  margin: 0;
-}
-
-.layout-container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-.layout-container > main,
-.layout-container > .Outlet {
-  flex: 1;
-}
-
 /* 타이틀 영역 */
 .main_div_title {
   padding: 20px;
@@ -29,7 +13,6 @@ body, html, #root {
 }
 
 .main_title {
-  cursor:pointer;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -49,33 +32,23 @@ body, html, #root {
   font-size: 1.1vw;
   cursor: pointer;
 }
-.main_title_logout{
-  border: none;
-   background-color: transparent;
-  position: absolute;
-  right: 0px;
-  top: 65%;
-  transform: translateY(-50%);
-  padding: 0.5vw 1vw;
-  font-size: 1.1vw;
-  cursor: pointer;
-}
 
-.main_title_welcome{
-  display: flex;
-  flex-direction: row-reverse;
-  font-size: 23px;
-  color: #7b2e00bd;
-}
-/* 카테고리 메뉴 */
+/* 메뉴 바 구조 */
 .main_top_menu {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   background-color: white;
-  position: relative;
-  z-index: 3;
-  justify-content: center;
+  padding: 0 16px;
+  gap: 16px;
 }
 
+.categories {
+  display: flex;
+  
+}
+
+/* 카테고리 */
 .category {
   width: 9vw;
   position: relative;
@@ -83,8 +56,6 @@ body, html, #root {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex: 1;
-  min-width: 100px;
   font-size: 1.2vw;
   padding: 1vw 0.8vw;
   white-space: nowrap;
@@ -149,4 +120,91 @@ body, html, #root {
   border-radius: 6px;
   cursor: pointer;
   white-space: nowrap;
+}
+
+/* 반응형 */
+@media (max-width: 600px) {
+  .main_title {
+    font-size: 5vw;
+  }
+
+  .search-input {
+    font-size: 0.9rem;
+    padding: 6px 10px;
+    max-width: 200px;
+  }
+
+  .search-button {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+  }
+
+  .category {
+    font-size: 3.5vw;
+  }
+
+  .dropdown > div {
+    font-size: 3vw;
+  }
+}
+/* 로그인 상태일 때 우측 정렬된 그룹 */
+.main_title_right_group {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 1vw;
+}
+
+/* 로그인 환영 문구 */
+.main_title_welcome {
+  font-size: 1.1vw;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.main_title_mypage{
+  cursor: pointer;
+}
+/* 로그아웃 버튼 */
+.main_title_logout {
+  border: none;
+  background-color: transparent;
+  padding: 0.5vw 1vw;
+  font-size: 1.1vw;
+  cursor: pointer;
+}
+
+/* 반응형 (모바일 대응) */
+@media (max-width: 600px) {
+  .main_title_right_group {
+    flex-direction: column;
+    align-items: flex-end;
+    top: 10px;
+    right: 10px;
+    transform: none;
+    gap: 4px;
+  }
+
+  .main_title_welcome {
+    font-size: 3.5vw;
+  }
+
+  .main_title_logout {
+    font-size: 3.5vw;
+  }
+}
+/* 전체 레이아웃 구조 */
+.layout-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* 본문 콘텐츠 */
+.main-content {
+  flex: 1;
+  height: auto;
 }

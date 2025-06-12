@@ -32,7 +32,8 @@ const Pw = () => {
           })
           const data = await response.json();
           if(data.success){
-            alert(`당신의 비밀번호는 ${data.user_password} 입니다`);
+            //console.log(data);
+            alert(`임시 비밀번호가 발급되었습니다: ${data.temp_password}`);
           } else{
             alert("일치하는 회원이 없습니다");
           }

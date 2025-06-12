@@ -1,0 +1,72 @@
+.mainlist{
+    margin-left: -100px;
+}
+/* 입고 수량 부분 */
+.product-list-inp{
+    height: 27px;
+    border-radius: 10px;
+    font-size: 20px;
+    width: 100px;
+}
+.td_addbtn{
+    border: none;
+    text-align: center;
+    vertical-align : middle;
+}
+.addbtn{
+    text-align: center;
+    font-size: 22px;
+    cursor: pointer;
+}  
+/* 입고할 상품 제목 (상품명, 색상, 사이즈) */
+.title{
+    font-size: 24px;
+    cursor: pointer;
+    margin-left: 20px;
+    margin-top: -30px;
+    white-space: nowrap;
+}
+/* 상품 제목 밑 상품 이름 */
+.title-product{
+   color: rgb(0, 148, 37);
+   font-size: 25px;
+   margin-top: 40px;
+}
+/* 선택 필요 */
+.title-product-none{
+    color: black;
+}
+/* 상품 나열한 것에 마우스 손 모양 */
+.title-product-list{
+    cursor: pointer;
+   
+}
+/* 맨 밑 table */
+.sidelist{
+    position: absolute;
+    left: 8%;
+    top: 85%;
+    width: 75%;
+    border: none;
+}
+/* 맨 밑 클릭한 상품 */
+.side-product{
+    padding: 30px;
+    font-weight: 600;
+    font-size: 25px;
+}
+.chooseName,
+.chooseColor,
+.chooseSize{
+    width: 25%;
+    height: 50px;
+    border: none;
+    font-size: 20px;
+    font-weight: 500;
+}
+.ul_Product_List{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: -5px;
+}

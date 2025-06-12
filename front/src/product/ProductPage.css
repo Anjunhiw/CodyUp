@@ -52,6 +52,7 @@
   font-size: clamp(16px, 1.8vw, 24px);
   margin-top: 10px;
 }
+
 .product_page_dd {
   font-size: clamp(16px, 1.8vw, 24px);
   margin-top: 10px;
@@ -59,8 +60,8 @@
 
 .product_page_order_button {
   width: 50%;
-   min-width: 120px;
-    align-self: flex-start;
+  min-width: 120px;
+  align-self: flex-start;
   padding: 12px 8px;
   background-color: #0c0c0c;
   color: white;
@@ -83,19 +84,23 @@
   color: green;
   font-size: clamp(14px, 1.2vw, 18px);
 }
+
 .product_page_review_section {
   margin-top: 30px;
-  width: 100%;
+  width: 80%;
+  margin-bottom: 5%;
 }
 
 .product_page_review_title {
   font-size: clamp(18px, 2vw, 26px);
   font-weight: bold;
   margin-bottom: 10px;
+  text-align: left;
+  margin-left: 2%;
 }
 
 .product_page_review_input {
-  width: 90%;
+  width: 96%;
   height: 80px;
   padding: 10px;
   font-size: 16px;
@@ -105,14 +110,48 @@
   margin-bottom: 10px;
 }
 
+/* 여기부터 리뷰 아이템 스타일 수정 적용 */
+
+.product_page_review_item {
+  background-color: transparent; /* 배경색 제거 */
+  padding: 12px 0;
+  border-bottom: 1px solid #ddd; /* 아이템 사이에만 구분선 */
+}
+
+/* 마지막 리뷰 아이템에는 구분선 제거 */
+.product_page_review_list li:last-child {
+  border-bottom: none;
+}
+
+.review_header {
+  font-weight: 600;
+  font-size: 14px;
+  color: #333;
+}
+
+.review_header span {
+  color: #666;
+  font-weight: normal;
+  font-size: 13px;
+}
+
+.review_content {
+  font-size: 15px;
+  color: #222;
+  margin-top: 6px;
+  white-space: pre-wrap; /* 줄바꿈 보존 */
+}
+
 .product_page_review_submit {
-  padding: 8px 16px;
-  font-size: 16px;
+  padding: 6px 14px;
+  font-size: 14px;
   background-color: #0c0c0c;
   color: white;
   border: none;
   border-radius: 6px;
   cursor: pointer;
+  position: relative;
+  transform: none; /* 위치는 인라인 스타일에서 절대 위치로 조정 */
 }
 
 .product_page_review_list {
@@ -121,12 +160,6 @@
   margin-top: 20px;
 }
 
-.product_page_review_item {
-  background-color: #f0f0f0;
-  padding: 10px;
-  border-radius: 6px;
-  margin-bottom: 10px;
-}
 .product_page_button_group {
   width: 100%;
   display: flex;
@@ -134,11 +167,90 @@
   gap: 8px; /* 버튼 사이의 거리 조절 */
   margin-top: 12px;
 }
+
 .product_page_select_section{
   max-width: none;
 }
- .product_page_slt{
+
+.product_page_slt{
   width: 34%;
   height: 28px;
   font-size: large;
- }
+}
+
+.related-products-container {
+  margin-top: 40px;
+  padding-top: 20px;
+}
+
+.related-products-title {
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+}
+
+.related-products-list {
+  display: flex;
+  gap: 20px;
+  flex-wrap: nowrap;
+}
+
+.related-product-card {
+  flex: 0 0 auto;
+  width: 150px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.related-product-card img {
+  width: 100%;
+  height: auto;
+  border: 1px solid #ccc;
+  transition: transform 0.2s;
+}
+
+.related-product-card img:hover {
+  transform: scale(1.05);
+}
+
+.related-product-card p {
+  margin-top: 5px;
+  font-size: 0.9rem;
+}
+
+.product_page_detail_section {
+  width: 80%;
+  margin: 30px auto 10px;
+  text-align: left;
+  border-top: 1px solid #ccc;
+  padding-top: 20px;
+}
+
+.product_page_detail_toggle {
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: #0c0c0c;
+  margin-bottom: 10px;
+}
+
+.product_page_detail_content {
+  background-color: #fff;
+  padding: 15px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.review_ac_button{
+  transform: translateY(25px);
+}
+.rv_buttons{
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+.review_add_btn{
+  float: right;
+}

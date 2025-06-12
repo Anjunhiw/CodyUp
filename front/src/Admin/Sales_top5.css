@@ -1,0 +1,22 @@
+.sales-top-select{
+   height: 40px;
+    font-size: 18px;
+    border-radius: 8px;
+    position: absolute;
+    left: 20%;
+}
+.sales-top-table{
+    position: relative;
+    margin-left: -12%;
+    margin-top: 5%;
+}
+.sales-top-table th{
+    background-color: #ececec;
+    width: 20%;
+    font-size: 25px;
+}
+.sales-top-table td{
+    border: 1px solid black;
+    border-radius: 10px;
+    font-size: 20px;
+}

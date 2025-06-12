@@ -1,5 +1,6 @@
 .Box-order{
     width: 90%;
+    height: 220px;
     border: 1px solid #cfcfcf;
     border-radius: 8px;
     display: flex;
@@ -10,11 +11,9 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 .table-order{
-    width: 50%;
-    border: 1px solid #ececec;
-    position: absolute;
-    left: 43%;
-    margin-top: 23px;
+    width: 89%;
+    margin-left: 10%;
+    margin-top: -14%;
 }
 .table-order th{
     width: 28%;
@@ -32,12 +31,9 @@
 }
 /*주문취소 버튼*/
 .info-order button{
-    border: 1px solid #8a8a8a;
-    border-radius: 5px;
-    cursor: pointer;;
-    position: absolute;
-    left: 19%;
-    margin-top: -50px;
+    position: relative;
+    bottom: 50px;
+    left: 235%;
 }
 .status-cancel{
     color: red;

@@ -68,6 +68,9 @@ const Orders_List = () => {
           <span className={order.status === '주문 취소' ? 'status-cancel' : ''}>
             {order.status}
           </span>
+           <div className='info-order'>
+         <button onClick={() => handleCancle(order.order_id)}>주문취소</button>
+         </div>
        </div>
         <table className='table-order'>
           <thead>
@@ -89,9 +92,6 @@ const Orders_List = () => {
             ))}
           </tbody>
         </table>
-        <div className='info-order'>
-         <button onClick={() => handleCancle(order.order_id)}>주문취소</button>
-         </div>
         </div>
         ))
       )}

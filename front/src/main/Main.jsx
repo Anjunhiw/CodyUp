@@ -229,8 +229,8 @@ function Main() {
   return (
     <>
     {/* 상단 할인상품 슬라이더 */}
-      <div className="main_div_discount">
-        <h3 className="main_product_slider_text">할인상품</h3>
+      <div className="main_div_discount" style={{marginTop:'7%'}}>
+        <h3 className="main_product_slider_text" style={{marginBottom:'3%'}}>할인상품</h3>
         <Slider {...sliderSettings}>
           {discountProducts.map((item, index) => {
             const isCenter = index === currentIndex % discountProducts.length;

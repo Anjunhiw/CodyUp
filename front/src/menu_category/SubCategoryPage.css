@@ -2,27 +2,40 @@
   display: flex;
   padding: 20px;
   gap: 20px;
+  align-items: flex-start;
 }
 
 .filter-panel {
+  position: sticky;
+  top: 50%;
+  transform: translateY(-50%);
+  align-self: flex-start;
   width: 17vw;
-  border-right: 1px solid #ccc;
   padding-right: 10px;
+  background-color: white;
 }
 
 .product-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
-  flex: 1;
+  align-items: start;
+  align-content: start;
+  padding-left: 2%;
+  border-left: 1px solid #ccc;
+  min-height: 1200px;
 }
 
 .product-card {
-  border: 1px solid #eee;
+  min-height: 340px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
   padding: 10px;
-  text-align: center;
-  transition: box-shadow 0.3s;
+  border: 1px solid #eee;
 }
+
 
 .product-card:hover {
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
@@ -32,11 +45,16 @@
   max-width: 100%;
   height: auto;
 }
+
 .priceslider_div {
   display: flex;
-  justify-content: center; /* 가로 중앙 정렬 */
-  align-items: center;      /* 세로 정렬 (선택) */
-  margin: 3px 0;           /* 위아래 여백 */
+  justify-content: center;
+  align-items: center;
+  margin: 3px 0;
 }
 
-   
+.product-infos {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

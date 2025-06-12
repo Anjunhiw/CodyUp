@@ -47,6 +47,10 @@ const App = () => {
     return (
         <Router>
             <Routes>
+                <Route path="/Terms" element={<Terms/>}/>
+                    <Route path="/ProcessPolicy" element={<ProcessPolicy/>}/>
+                    <Route path="/LocationPolicy" element={<LocationPolicy/>}/>
+                    <Route path="/LegalNotice" element={<LegalNotice/>}/>
                 {/* 공통 레이아웃 Route */}
                 <Route path="/" element={<Layout isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>}>
                     <Route index element={<Main />} /> {/* / 경로에 Main 보여줌 */}
@@ -70,10 +74,6 @@ const App = () => {
                     <Route path="/mypage/cart" element={<CartPage userId={sessionStorage.getItem("user_id")} />} />
                     <Route path="/mypage/wishlist" element={<WishlistPage userId={sessionStorage.getItem("user_id")} />}/>
                     <Route path="/mypage/myorder" element={<MyOrders userId={sessionStorage.getItem("user_id")} />}/>
-                    <Route path="/Terms" element={<Terms/>}/>
-                    <Route path="/ProcessPolicy" element={<ProcessPolicy/>}/>
-                    <Route path="/LocationPolicy" element={<LocationPolicy/>}/>
-                    <Route path="/LegalNotice" element={<LegalNotice/>}/>
                 </Route>
             </Routes>
         </Router>

@@ -108,19 +108,23 @@
 .weather_section {
   margin: 40px 0;
   display: flex;
-  flex-direction: column;
+  
   align-items: center;
 }
 
 .today_weather_card {
   background-color: #fff6d1;
-  padding: 20px;
-  border-radius: 12px;
+  padding: clamp(20px, 2vw, 32px);
+  border-radius: 16px;
   text-align: center;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
   margin-bottom: 20px;
-  width: 260px;
+  width: clamp(220px, 24%, 280px); /* 반응형 너비 */
+  height: clamp(160px, 22vw, 240px); /* 반응형 높이 */
   position: relative;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  min-width: clamp(220px, 24%, 280px);
 }
 
 .today_weather_card::before {
@@ -139,17 +143,21 @@
 }
 
 .weather_day_card {
-  flex: 0 0 80px;
   background-color: white;
   border-radius: 10px;
-  padding: 10px 6px;
+  padding: clamp(6px, 1.2vw, 12px);
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
   text-align: center;
-  font-size: 0.9rem;
+  font-size: clamp(0.8rem, 0.9vw, 1rem);
   user-select: none;
   cursor: default;
-  transition: background-color 0.3s;
-  min-width: 100px;
+  transition: all 0.3s ease;
+  flex: 0 0 auto;
+  width: clamp(90px, 12vw, 160px); /* 반응형 너비 */
+  height: clamp(120px, 16vw, 200px); /* ✅ 반응형 높이 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .weather_day_card::before {
@@ -166,16 +174,21 @@
 
 .weather_banner_full {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  align-items: stretch; /* 높이 정렬 */
+  gap: 30px;
+  width: 87.5%;
+  margin: 7% auto 0 auto;
   padding: 20px 30px;
   background-color: transparent;
-  margin: 40px auto 0 auto;
-  width: 87.5%;
-  gap: 30px;
+  overflow-x: auto;
+  flex-wrap: nowrap; /* 한 줄 유지 */
+  justify-content: center;
+  gap: 7%;
 }
 
+
 .today_weather_box {
+  width: 20%;
   flex: 0 0 220px;
   background: white;
   border-radius: 12px;
@@ -186,14 +199,15 @@
 }
 
 .weather_week_preview {
-  flex: 1;
   display: flex;
-  gap: 14px;
+  flex-wrap: nowrap;
   overflow-x: auto;
-  padding-bottom: 8px;
+  gap: 16px;
+  padding: 0 16px;
+  padding-left: clamp(10px, 5%, 80px); /* 🔧 핵심: 오늘 카드 너비만큼 확보 */
   scrollbar-width: thin;
   scrollbar-color: #aaa #eee;
-  justify-content: space-around;
+  margin: auto 0;
 }
 
 .weather_week_preview::-webkit-scrollbar {
@@ -227,7 +241,8 @@
 }
 
 .recommend_card {
-  width: 150px;
+  width: 13%;
+  min-width: 150px;
   background: white;
   padding: 10px;
   border-radius: 10px;

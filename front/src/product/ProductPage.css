@@ -181,6 +181,7 @@
 .related-products-container {
   margin-top: 40px;
   padding-top: 20px;
+  width: 100%;
 }
 
 .related-products-title {
@@ -189,14 +190,17 @@
 }
 
 .related-products-list {
+  width: 40%;
   display: flex;
+  justify-content: center;
   gap: 20px;
   flex-wrap: nowrap;
+  margin: 0 auto;
 }
 
 .related-product-card {
   flex: 0 0 auto;
-  width: 150px;
+  width: 30%;
   cursor: pointer;
   text-align: center;
 }
@@ -253,4 +257,5 @@
 }
 .review_add_btn{
   float: right;
+  background-color: transparent;
 }

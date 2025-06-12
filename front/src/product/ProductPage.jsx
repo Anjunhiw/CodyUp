@@ -309,7 +309,7 @@ function ProductPage() {
 
           <div className="product_page_dd">{getKoreanDateWithDayNDaysLater(2)} 도착 예정</div>
 
-          <div style={{ width: '40%', marginTop: '10px' }}>
+          <div style={{ width: '40%', marginTop: '10px', backgroundColor:'transparent' }}>
             <WishButton
               itemId={product.item_origin_id}
               itemName={product.item_name}

@@ -1,6 +1,6 @@
 .sales-date{
     position: absolute;
-    top: 30%;
+    top: 26%;
     left: 10%;
     width: 100%;
 }
@@ -21,7 +21,7 @@
 }
 .sales-date-title{
     padding: 45px;
-    font-size: 30px;
+    font-size: 32px;
 }
 .sales-date-inp{
     width: 15%;

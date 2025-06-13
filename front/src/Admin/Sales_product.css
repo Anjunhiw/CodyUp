@@ -13,12 +13,14 @@
     margin-top: 30px;
 }
 .sales-product-btn{
-    width: 5%;
+    width: 4%;
     height: 38px;
     border: 2px solid;
     border-radius: 6px;
     margin-left: 20px;
     cursor: pointer;
+     background-color: white;
+     font-size:17px;
 }
 .sales-product-table{
     margin-left: 4%;

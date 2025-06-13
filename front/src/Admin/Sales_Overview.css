@@ -42,6 +42,8 @@
     position: relative;
     left: 9%;
     margin-top: -33px;
+    background-color: white;
+     font-size:17px;
 }
 .sales-date-table{
     margin-left: -6%;

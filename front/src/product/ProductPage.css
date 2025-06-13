@@ -190,15 +190,20 @@
 
 .related-products-list {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 20px;
-  flex-wrap: nowrap;
+  margin-top: 16px;
 }
 
 .related-product-card {
-  flex: 0 0 auto;
-  width: 150px;
+   width: 13%;
+  min-width: 150px;
+  background: transparent;
+  padding: 10px;
+  border-radius: 10px;
+  transition: transform 0.2s;
   cursor: pointer;
-  text-align: center;
 }
 
 .related-product-card img {

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './CartButton.css';
 
-function CartButton({ item, selectedColor, selectedSize, selectedAmount }) {
+function CartButton({ item, selectedColor, selectedSize, selectedAmount, disabled }) {
   const [inCart, setInCart] = useState(false);
   const userId = sessionStorage.getItem('user_id');
 
@@ -48,8 +48,12 @@ function CartButton({ item, selectedColor, selectedSize, selectedAmount }) {
   };
 
   return (
-    <button onClick={handleAddToCart} className='cart-button'>
-      {inCart ? '🛒 담김' : '➕ 장바구니'}
+    <button 
+    onClick={handleAddToCart} 
+    className='cart-button'
+    disabled={disabled}
+    >
+     ➕ 장바구니
     </button>
   );
 }

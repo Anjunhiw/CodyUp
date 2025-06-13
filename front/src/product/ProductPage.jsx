@@ -175,20 +175,24 @@ function ProductPage() {
   };
 
   const renderStars = (value, onChange = null) => (
-    <div style={{ margin: '4px 0' }}>
-      {[1, 2, 3, 4, 5].map(star => (
-        <span
-          key={star}
-          onClick={() => onChange && onChange(star)}
-          style={{
-            fontSize: '1.2rem',
-            color: star <= value ? '#ffc107' : '#ccc',
-            cursor: onChange ? 'pointer' : 'default'
-          }}
-        >★</span>
-      ))}
-    </div>
-  );
+  <div style={{ margin: '4px 0' }}>
+    {[1, 2, 3, 4, 5].map(star => (
+      <span
+        key={star}
+        onClick={(e) => {
+          e.preventDefault();
+          if(onChange) onChange(star);
+        }}
+        style={{
+          fontSize: '1.2rem',
+          color: star <= value ? '#ffc107' : '#ccc',
+          cursor: onChange ? 'pointer' : 'default'
+        }}
+      >★</span>
+    ))}
+  </div>
+);
+
 
   const getKoreanDateWithDayNDaysLater = (n) => {
     const weekdays = ['일', '월', '화', '수', '목', '금', '토'];
@@ -197,9 +201,18 @@ function ProductPage() {
     return `${date.getMonth() + 1}월 ${date.getDate()}일 (${weekdays[date.getDay()]})`;
   };
 
-  const indexOfLastReview = currentPage * reviewsPerPage;
-  const indexOfFirstReview = indexOfLastReview - reviewsPerPage;
-  const currentReviews = reviews.slice(indexOfFirstReview, indexOfLastReview);
+  // 내가 작성한 리뷰를 먼저 오도록 전체 정렬
+const sortedReviews = [...reviews].sort((a, b) => {
+  const aIsMine = a.user_id === currentUserId ? -1 : 0;
+  const bIsMine = b.user_id === currentUserId ? -1 : 0;
+  return aIsMine - bIsMine;
+});
+
+// 정렬된 전체 리뷰에서 페이지네이션 적용
+const indexOfLastReview = currentPage * reviewsPerPage;
+const indexOfFirstReview = indexOfLastReview - reviewsPerPage;
+const currentReviews = sortedReviews.slice(indexOfFirstReview, indexOfLastReview);
+
   const totalPages = Math.ceil(reviews.length / reviewsPerPage);
   // reviews가 빈 배열이면 0, 아니면 평균 별점 계산
   const averageRating = reviews.length
@@ -304,6 +317,7 @@ function ProductPage() {
               selectedColor={selectedColor}
               selectedSize={selectedSize}
               selectedAmount={selectedAmount}
+              disabled={maxAmount === 0}
             />
           </div>
 
@@ -412,29 +426,34 @@ function ProductPage() {
       <p style={{ fontWeight: 'bold' }}>
         {review.user_name || review.user_id} - {new Date(review.created_at).toLocaleString()}
       </p>
-      {renderStars(review.rating)}
+      
       {editingReviewId === review.review_id ? (
-        <>
-          {renderStars(editedRating, setEditedRating)}
-          <textarea
-            value={editedReviewText}
-            onChange={(e) => setEditedReviewText(e.target.value)}
-            rows={3}
-          />
-          <button onClick={handleUpdateReview}>저장</button>
-          <button onClick={() => setEditingReviewId(null)}>취소</button>
-        </>
+  <>
+    {/* 원래 별점 제거하고 별점 수정 기능만 노출 */}
+    {renderStars(editedRating, setEditedRating)}
+    <textarea
+      style={{resize:'none'}}
+      value={editedReviewText}
+      onChange={(e) => setEditedReviewText(e.target.value)}
+      rows={3}
+    />
+    <button onClick={handleUpdateReview}>저장</button>
+    <button onClick={() => setEditingReviewId(null)}>취소</button>
+  </>
       ) : (
         <>
-          <p>{review.review_content}</p>
-          {currentUserId === review.user_id && (
-            <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '8px' }}>
-              <button onClick={() => handleEditClick(review)}>수정</button>
-              <button onClick={() => handleDeleteReview(review.review_id)}>삭제</button>
-            </div>
-          )}
-        </>
-      )}
+    {renderStars(review.rating)}
+    <p>{review.review_content}</p>
+    {currentUserId === review.user_id && (
+      <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '8px' }}>
+        <button onClick={() => handleEditClick(review)}>수정</button>
+        <button onClick={() => handleDeleteReview(review.review_id)}>삭제</button>
+      </div>
+    )}
+  </>
+)}
+
+
     </div>
 ))}
 

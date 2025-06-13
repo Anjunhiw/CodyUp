@@ -65,7 +65,7 @@
   padding: 12px 8px;
   background-color: #0c0c0c;
   color: white;
-  border: 1 solid #0c0c0c;
+  
   border-radius: 8px;
   cursor: pointer;
   font-size: clamp(12px, 1.5vw, 20px);
@@ -181,7 +181,6 @@
 .related-products-container {
   margin-top: 40px;
   padding-top: 20px;
-  width: 100%;
 }
 
 .related-products-title {
@@ -190,17 +189,14 @@
 }
 
 .related-products-list {
-  width: 40%;
   display: flex;
-  justify-content: center;
   gap: 20px;
   flex-wrap: nowrap;
-  margin: 0 auto;
 }
 
 .related-product-card {
   flex: 0 0 auto;
-  width: 30%;
+  width: 150px;
   cursor: pointer;
   text-align: center;
 }
@@ -257,5 +253,4 @@
 }
 .review_add_btn{
   float: right;
-  background-color: transparent;
 }

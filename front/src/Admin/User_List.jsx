@@ -131,15 +131,36 @@ const User_List = () => {
         <td>
           {editIdx === index ? (
                   <>
-                    <button onClick={saveEdit}>저장</button>
+                    <button 
+                    style={{ border:'none', backgroundColor:'white', fontSize:'17px' }} 
+                    onClick={saveEdit}
+                    >
+                      저장
+                      </button>
                     <span>/</span>
-                    <button onClick={cancelEdit}>취소</button>
+                    <button 
+                    style={{ border:'none', backgroundColor:'white', fontSize:'17px' }} 
+                    onClick={cancelEdit}
+                    >
+                      취소
+                      </button>
                   </>
                 ) : (
                   <>
-                  <button className="edit" onClick={() => startEdit(index, user)}>수정</button>
+                  <button 
+                  style={{ border:'none', backgroundColor:'white', fontSize:'17px' }} 
+                  className="edit" 
+                  onClick={() => startEdit(index, user)}
+                  >수정
+                  </button>
                   <span>/</span>
-                  <button className="delete"onClick={() => deleteUser(user.user_id)}>삭제</button>
+                  <button 
+                  style={{ border:'none', backgroundColor:'white', fontSize:'17px' }} 
+                  className="delete"
+                  onClick={() => deleteUser(user.user_id)}
+                  >
+                    삭제
+                    </button>
                     </>
                         )}
        </td>

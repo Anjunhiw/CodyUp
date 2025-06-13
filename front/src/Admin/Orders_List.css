@@ -34,6 +34,9 @@
     position: relative;
     bottom: 50px;
     left: 235%;
+    border: none;
+    background-color: white;
+    font-size: 17px;
 }
 .status-cancel{
     color: red;

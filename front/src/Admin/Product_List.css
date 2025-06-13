@@ -17,6 +17,9 @@
     text-align: center;
     font-size: 22px;
     cursor: pointer;
+    border: none;
+    background-color: white;
+
 }  
 /* 입고할 상품 제목 (상품명, 색상, 사이즈) */
 .title{
@@ -25,6 +28,8 @@
     margin-left: 20px;
     margin-top: -30px;
     white-space: nowrap;
+    border: none;
+    background-color: white;
 }
 /* 상품 제목 밑 상품 이름 */
 .title-product{

@@ -148,14 +148,14 @@ const User_List = () => {
                 ) : (
                   <>
                   <button 
-                  style={{ border:'none', backgroundColor:'white', fontSize:'17px' }} 
+                  
                   className="edit" 
                   onClick={() => startEdit(index, user)}
                   >수정
                   </button>
                   <span>/</span>
                   <button 
-                  style={{ border:'none', backgroundColor:'white', fontSize:'17px' }} 
+                  
                   className="delete"
                   onClick={() => deleteUser(user.user_id)}
                   >

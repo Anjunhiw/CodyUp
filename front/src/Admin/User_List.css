@@ -17,7 +17,13 @@ table td:nth-child(1){
 
 .edit{
     color: blue;
+    border: none;
+    background-color: white;
+    font-size: 17px;
 }
 .delete{
     color: red;
+    border: none;
+    background-color: white;
+    font-size: 17px;
 }
